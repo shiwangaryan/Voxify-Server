@@ -1,6 +1,6 @@
 const cloudinary = require("cloudinary").v2;
 
-export const uploadAudioToCloudinary = async (audioBuffer) => {
+const uploadAudioToCloudinary = async (audioBuffer) => {
   try {
     return new Promise((resolve, reject) => {
       const uploadResponse = cloudinary.uploader.upload_stream(  // returns a writable stream here
@@ -25,3 +25,5 @@ export const uploadAudioToCloudinary = async (audioBuffer) => {
     throw error;
   }
 };
+
+module.exports= uploadAudioToCloudinary;

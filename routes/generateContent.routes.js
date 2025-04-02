@@ -1,5 +1,5 @@
 const express = require("express");
-const { generateImageController} = require("../controllers/generate_content/generateImage.controler");
+const { generateImageController} = require("../controllers/generate_content/generateImage.controller");
 const {  generateAudioController } = require("../controllers/generate_content/generateAudio.controller");
 const generateRouter = express.Router();
 

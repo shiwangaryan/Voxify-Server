@@ -32,8 +32,8 @@ const register = async (req, res) => {
     sendVerificationMail(email, emailToken);
     return res.status(201).json({ message: "Verification mail sent" });
   } catch (err) {
-    res.status(500).json({ message: `Server error. Please try again later` });
     console.error("User creation error: ", err);
+    res.status(500).json({ message: `Server error. Please try again later` });
     return;
   }
 };

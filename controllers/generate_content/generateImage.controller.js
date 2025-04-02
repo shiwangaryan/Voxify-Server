@@ -1,5 +1,5 @@
-import OpenAI from 'openai';
-require('dotenv').config();
+const OpenAI = require("openai");
+require("dotenv").config();
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -7,8 +7,8 @@ const generateImageController = async (req, res) => {
   try {
     const { description } = req.body;
 
-    const response = await openai.image.generate({
-      model: "dall-e-3",
+    const response = await openai.images.generate({
+      model: "dall-e",
       prompt: description,
       n: 1,
       size: "1024x1024",
@@ -16,7 +16,7 @@ const generateImageController = async (req, res) => {
 
     const imageUrl = response.data[0].url;
     console.log("Image generated successfully");
-    return res.status(200).json({imageUrl});
+    return res.status(200).json({ imageUrl: imageUrl });
   } catch (error) {
     console.log("Error in generateImageController: ", error);
     return res
@@ -25,4 +25,4 @@ const generateImageController = async (req, res) => {
   }
 };
 
-module.exports = generateImageController;
+module.exports = { generateImageController };
